@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="林豪杰の研究ポートフォリオサイト">
+  <title>林豪杰 | Research Portfolio</title>
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6c7b;
+      --line: #d8ded5;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --soft: #e7f0ed;
+      --shadow: 0 14px 32px rgba(31, 41, 51, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-name {
+      font-weight: 700;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 42px 24px 64px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 30px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .hero-text,
+    .info-panel,
+    section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-text {
+      padding: 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-dark);
+      background: var(--soft);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      margin: 0 0 14px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      background: #ffffff;
+      color: var(--accent-dark);
+    }
+
+    .button:hover,
+    .button:focus {
+      text-decoration: none;
+      filter: brightness(0.98);
+    }
+
+    .info-panel {
+      padding: 28px;
+    }
+
+    .info-panel h2 {
+      margin-top: 0;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+    }
+
+    .info-list div {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+
+    .info-list div:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-list dt {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .info-list dd {
+      margin: 2px 0 0;
+      font-weight: 600;
+    }
+
+    section {
+      padding: 30px;
+      margin-top: 22px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      margin: 0 0 16px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin: 22px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: #fbfcfa;
+    }
+
+    .tag-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      background: var(--soft);
+      color: var(--accent-dark);
+      border: 1px solid #c8dfd9;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 24px 38px;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav ul {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      main {
+        padding: 26px 16px 48px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text,
+      .info-panel,
+      section {
+        padding: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="site-name">林豪杰 | Research Portfolio</div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#previous-research">Previous Research</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">Master's Student Portfolio</span>
+        <h1>林豪杰</h1>
+        <p class="subtitle">
+          日本大学大学院 理工学研究科 情報科学専攻に所属し、脳波を用いた人間の注意力や認知状態の評価に関心を持っています。
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#research">Research</a>
+          <a class="button secondary" href="mailto:csgo26008@g.nihon-u.ac.jp">Contact</a>
+        </div>
+      </div>
+
+      <aside class="info-panel" id="profile" aria-labelledby="profile-title">
+        <h2 id="profile-title">Profile</h2>
+        <dl class="info-list">
+          <div>
+            <dt>Name</dt>
+            <dd>林豪杰</dd>
+          </div>
+          <div>
+            <dt>Affiliation</dt>
+            <dd>日本大学大学院 理工学研究科 情報科学専攻</dd>
+          </div>
+          <div>
+            <dt>Laboratory</dt>
+            <dd>高橋研究室</dd>
+          </div>
+          <div>
+            <dt>Research Area</dt>
+            <dd>EEG, Human Attention, Driving Support</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="research" aria-labelledby="research-title">
+      <h2 id="research-title">Research</h2>
+      <h3>Current Research Theme</h3>
+      <p>
+        脳波を用いた帯電微粒子水が運転中の注意力に及ぼす影響評価
+      </p>
+      <p>
+        <strong>Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</strong>
+      </p>
+      <p>
+        本研究では、運転中の注意力に対して帯電微粒子水がどのような影響を及ぼすかを、脳波を用いて評価することを目的としています。
+        EEGデータを通して、人間の注意状態や認知的変化を客観的に捉える方法に関心があります。
+      </p>
+      <p class="note">
+        研究内容は公開可能な範囲で記載しています。詳細な実験条件や未発表データは掲載していません。
+      </p>
+    </section>
+
+    <section id="previous-research" aria-labelledby="previous-research-title">
+      <h2 id="previous-research-title">Previous Research</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Undergraduate Research Theme</h3>
+          <p>
+            脳波を用いた歩行の創造性に及ぼす影響評価
+          </p>
+          <p>
+            <strong>Evaluation of the Effects of Walking on Creativity Using EEG</strong>
+          </p>
+          <p>
+            学部時代には、歩行が創造性に与える影響について、脳波を用いた評価に取り組みました。
+          </p>
+        </div>
+        <div class="mini-card">
+          <h3>Research PDF</h3>
+          <p>
+            学部研究に関するPDF資料は、公開可能な内容であることを確認したうえで掲載します。
+          </p>
+          <p>
+            <a href="pdf/undergraduate-research.pdf">View undergraduate research PDF</a>
+          </p>
+          <p class="note">
+            PDFをアップロードした後、ファイル名をこのリンクと一致させてください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <ul class="tag-list">
+        <li>Python</li>
+        <li>C</li>
+        <li>C++</li>
+        <li>Java</li>
+        <li>EEG</li>
+        <li>NITRS</li>
+        <li>GitHub</li>
+      </ul>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <p>
+        EEGを用いた注意力・創造性評価に関連する実験、データ分析、プログラミングに取り組んでいます。
+        公開可能なコードや成果物は、今後このページから参照できるように更新する予定です。
+      </p>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>
+        Email:
+        <a href="mailto:csgo26008@g.nihon-u.ac.jp">csgo26008@g.nihon-u.ac.jp</a>
+      </p>
+      <p>
+        Laboratory Profile:
+        <a href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805">高橋研究室 個人ページ</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 林豪杰. Last updated: June 2026.</p>
+  </footer>
+</body>
+</html>
