@@ -30,6 +30,12 @@
     a { color: var(--accent-d); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* ── LANGUAGE CONTENT ── */
+    .ja { display: block; }
+    .en { display: none; }
+    html[lang="en"] .ja { display: none; }
+    html[lang="en"] .en { display: block; }
+
     /* ── LANGUAGE TOGGLE ── */
     .lang-toggle {
       display: flex; gap: 8px;
@@ -51,11 +57,6 @@
       color: #fff;
     }
     .lang-btn:hover { filter: brightness(0.92); }
-
-    /* ── LANGUAGE CONTENT ── */
-    [data-lang="en"] { display: none; }
-    html[lang="en"] [data-lang="ja"] { display: none; }
-    html[lang="en"] [data-lang="en"] { display: block; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
@@ -267,11 +268,7 @@
     }
     .research-card h3 { font-size: 0.97rem; font-weight: 700; line-height: 1.45; }
     .research-card h3 .en { font-weight: 400; font-style: italic; color: var(--muted); font-size: 0.88rem; }
-    .research-card p { font-size: 0.9rem; color: var(--muted); margin-top: 10px; }
-    .research-content {
-      font-size: 0.9rem; color: var(--muted); margin-top: 10px; line-height: 1.7;
-    }
-    .research-content strong { color: var(--text); font-weight: 600; }
+    .research-card p { font-size: 0.9rem; color: var(--muted); margin-top: 10px; line-height: 1.6; }
     .research-img {
       border-radius: 6px; overflow: hidden;
       border: 1px solid var(--line);
@@ -535,23 +532,21 @@
 
 <header>
   <div class="nav-inner">
-    <div class="nav-left">
-      <div class="site-name">林豪杰 <em>|</em> Research Portfolio</div>
-    </div>
+    <div class="site-name">林豪杰 <em>|</em> Research Portfolio</div>
     <div style="display: flex; align-items: center; gap: 20px; width: 100%; justify-content: flex-end;">
       <nav aria-label="Main navigation">
         <ul>
-          <li><a href="#research" data-lang="ja">研究</a><a href="#research" data-lang="en" style="display:none;">Research</a></li>
-          <li><a href="#publications" data-lang="ja">学会発表・論文</a><a href="#publications" data-lang="en" style="display:none;">Publications</a></li>
-          <li><a href="#previous" data-lang="ja">過去の研究</a><a href="#previous" data-lang="en" style="display:none;">Previous Work</a></li>
-          <li><a href="#skills" data-lang="ja">スキル</a><a href="#skills" data-lang="en" style="display:none;">Skills</a></li>
-          <li><a href="#hobbies" data-lang="ja">趣味</a><a href="#hobbies" data-lang="en" style="display:none;">Hobbies</a></li>
-          <li><a href="#contact" data-lang="ja">連絡先</a><a href="#contact" data-lang="en" style="display:none;">Contact</a></li>
+          <li><a href="#research"><span class="ja">研究</span><span class="en">Research</span></a></li>
+          <li><a href="#publications"><span class="ja">学会発表・論文</span><span class="en">Publications</span></a></li>
+          <li><a href="#previous"><span class="ja">過去の研究</span><span class="en">Previous Work</span></a></li>
+          <li><a href="#skills"><span class="ja">スキル</span><span class="en">Skills</span></a></li>
+          <li><a href="#hobbies"><span class="ja">趣味</span><span class="en">Hobbies</span></a></li>
+          <li><a href="#contact"><span class="ja">連絡先</span><span class="en">Contact</span></a></li>
         </ul>
       </nav>
       <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="ja" onclick="setLanguage('ja')">日本語</button>
-        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">English</button>
+        <button class="lang-btn active ja" onclick="setLanguage('ja')">日本語</button>
+        <button class="lang-btn en" onclick="setLanguage('en')">English</button>
       </div>
     </div>
   </div>
@@ -570,17 +565,16 @@
       <div class="hero-info">
         <h1>林 豪杰</h1>
         <div class="name-en" style="font-size:0.9rem;font-weight:500;">LIN HAOJIE</div>
-        <div class="eyebrow" data-lang="ja">修士課程 / Master's Student</div>
-        <div class="eyebrow" data-lang="en" style="display:none;">Master's Student</div>
+        <div class="eyebrow"><span class="ja">修士課程 / Master's Student</span><span class="en">Master's Student</span></div>
         <p class="hero-subtitle">
-          <span data-lang="ja">脳波（EEG）を用いた人間の注意力・認知状態の評価を研究しています。</span>
-          <span data-lang="en" style="display:none;">Researching human attention and cognitive state assessment using EEG signals.</span>
+          <span class="ja">脳波（EEG）を用いた人間の注意力・認知状態の評価を研究しています。</span>
+          <span class="en">Researching human attention and cognitive state assessment using EEG signals.</span>
           <br>
-          <em style="font-size:0.84rem;"><span data-lang="ja">Research interests include EEG-based attention assessment, cognitive state estimation, and driving support systems.</span><span data-lang="en" style="display:none;">Research interests include EEG-based attention assessment, cognitive state estimation, and driving support systems.</span></em>
+          <em><span class="ja">Research interests include EEG-based attention assessment, cognitive state estimation, and driving support systems.</span><span class="en">Research interests include EEG-based attention assessment, cognitive state estimation, and driving support systems.</span></em>
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="#research"><span data-lang="ja">研究を見る</span><span data-lang="en" style="display:none;">View Research</span></a>
-          <a class="btn btn-outline" href="mailto:csgo26008@g.nihon-u.ac.jp"><span data-lang="ja">連絡する</span><span data-lang="en" style="display:none;">Contact</span></a>
+          <a class="btn btn-primary" href="#research"><span class="ja">研究を見る</span><span class="en">View Research</span></a>
+          <a class="btn btn-outline" href="mailto:csgo26008@g.nihon-u.ac.jp"><span class="ja">連絡する</span><span class="en">Contact</span></a>
         </div>
       </div>
     </div>
@@ -588,23 +582,19 @@
     <div style="border-left:1px solid var(--line);padding-left:28px;display:flex;align-items:center;">
       <dl class="info-dl" style="width:100%;">
         <div class="info-row">
-          <dt data-lang="ja">出身地 / Origin</dt>
-          <dt data-lang="en" style="display:none;">Origin</dt>
-          <dd><span data-lang="ja">中国 福建省</span><span data-lang="en" style="display:none;">Fujian, China</span></dd>
+          <dt><span class="ja">出身地 / Origin</span><span class="en">Origin</span></dt>
+          <dd><span class="ja">中国 福建省</span><span class="en">Fujian, China</span></dd>
         </div>
         <div class="info-row">
-          <dt data-lang="ja">所属 / Affiliation</dt>
-          <dt data-lang="en" style="display:none;">Affiliation</dt>
-          <dd><span data-lang="ja">日本大学大学院 理工学研究科 情報科学専攻</span><span data-lang="en" style="display:none;">Nihon University, Graduate School of Science and Engineering, Department of Computer Science</span></dd>
+          <dt><span class="ja">所属 / Affiliation</span><span class="en">Affiliation</span></dt>
+          <dd><span class="ja">日本大学大学院 理工学研究科 情報科学専攻</span><span class="en">Nihon University, Graduate School of Science and Engineering</span></dd>
         </div>
         <div class="info-row">
-          <dt data-lang="ja">研究室 / Laboratory</dt>
-          <dt data-lang="en" style="display:none;">Laboratory</dt>
-          <dd><span data-lang="ja">高橋研究室</span><span data-lang="en" style="display:none;">Takahashi Lab</span></dd>
+          <dt><span class="ja">研究室 / Laboratory</span><span class="en">Laboratory</span></dt>
+          <dd><span class="ja">高橋研究室</span><span class="en">Takahashi Lab</span></dd>
         </div>
         <div class="info-row">
-          <dt data-lang="ja">研究分野 / Research Area</dt>
-          <dt data-lang="en" style="display:none;">Research Area</dt>
+          <dt><span class="ja">研究分野 / Research Area</span><span class="en">Research Area</span></dt>
           <dd>EEG・Attention Assessment</dd>
         </div>
       </dl>
@@ -615,34 +605,30 @@
   <!-- ── RESEARCH ── -->
   <section id="research" class="anim">
     <div class="sec-head">
-      <h2 data-lang="ja">現在の研究 / Current Research</h2>
-      <h2 data-lang="en" style="display:none;">Current Research</h2>
-      <span class="sub" data-lang="ja">RESEARCH THEME</span>
-      <span class="sub" data-lang="en" style="display:none;">RESEARCH THEME</span>
+      <h2><span class="ja">現在の研究</span><span class="en">Current Research</span></h2>
+      <span class="sub"><span class="ja">RESEARCH THEME</span><span class="en">RESEARCH THEME</span></span>
     </div>
     <div class="research-layout">
       <div class="research-card">
         <h3>
-          <span data-lang="ja">脳波を用いた帯電微粒子水が運転中の注意力に及ぼす影響評価</span>
-          <span data-lang="en" style="display:none;">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span>
+          <span class="ja">脳波を用いた帯電微粒子水が運転中の注意力に及ぼす影響評価</span>
+          <span class="en">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span>
           <br>
-          <span class="en"><span data-lang="ja">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span><span data-lang="en" style="display:none;">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span></span>
+          <span class="en"><span class="ja">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span><span class="en">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span></span>
         </h3>
-        <div class="research-content">
-          <span data-lang="ja">
-            近年，交通事故の多くはドライバーのヒューマンエラーに起因しており，その要因の一つとして運転中の注意力低下が指摘されている。特に長時間運転や単調な走行環境では覚醒水準が低下しやすく，漫然運転が事故の主要因の一つとされている。<br><br>
-            <strong>本研究の目的：</strong>脳波（EEG）を用いて帯電微粒子水が運転中の注意力に及ぼす影響を客観的に評価すること。<br><br>
-            <strong>研究背景：</strong>人の認知機能は周囲の環境要因の影響を受けることが知られており，特に室内空気質が注意力や作業効率に関与する可能性が示唆されている。帯電微粒子水は空気中に微細な水粒子を放出し，除菌・脱臭を通じた空気質の改善に寄与する技術として利用されているが，運転中の注意力に与える影響については，脳波をはじめとした生体情報に基づく客観的な検証は十分に行われていない。
+        <p>
+          <span class="ja">
+            <strong>研究背景：</strong> 交通事故の多くはドライバーのヒューマンエラーに起因しており、長時間運転では注意力低下が主要因となっている。室内空気質が認知機能に影響を与えることが知られており、帯電微粒子水が運転中の注意力に与える影響について、脳波による客観的検証が必要とされている。<br><br>
+            <strong>研究目的：</strong> 脳波（EEG）を用いて、帯電微粒子水が運転中の注意力に及ぼす影響を客観的に評価する。
           </span>
-          <span data-lang="en" style="display:none;">
-            In recent years, many traffic accidents have been caused by driver human error, with decreased attention during driving being a major contributing factor. Especially during long-term driving or in monotonous driving environments, arousal levels tend to decrease easily, making inattentive driving one of the major causes of accidents.<br><br>
-            <strong>Research Objective:</strong> To objectively evaluate the effects of charged fine particle water on driving attention using EEG (electroencephalography).<br><br>
-            <strong>Research Background:</strong> Human cognitive function is known to be influenced by environmental factors, particularly indoor air quality which has been suggested to affect attention and work efficiency. Charged fine particle water releases fine water particles into the air and is used as a technology that contributes to improved air quality through sterilization and deodorization. However, objective verification based on biomedical signals such as EEG regarding its effects on driving attention has not been sufficiently conducted.
+          <span class="en">
+            <strong>Background:</strong> Many traffic accidents are caused by driver human error, with attention decline being a major factor in long-term driving. Since indoor air quality is known to affect cognitive function, objective verification using EEG regarding the effects of charged fine particle water on driving attention is needed.<br><br>
+            <strong>Objective:</strong> To objectively evaluate the effects of charged fine particle water on driving attention using EEG (electroencephalography).
           </span>
-        </div>
+        </p>
         <div class="note-box">
-          <span data-lang="ja">📌 研究内容は公開可能な範囲で記載しています。詳細な実験条件や未発表データは掲載していません。</span>
-          <span data-lang="en" style="display:none;">📌 Only publicly shareable content is described here. Detailed experimental conditions and unpublished data are not disclosed.</span>
+          <span class="ja">📌 研究内容は公開可能な範囲で記載しています。詳細な実験条件や未発表データは掲載していません。</span>
+          <span class="en">📌 Only publicly shareable content is described here. Detailed experimental conditions and unpublished data are not disclosed.</span>
         </div>
       </div>
       <div>
@@ -658,21 +644,16 @@
   <!-- ── PUBLICATIONS ── -->
   <section id="publications" class="anim">
     <div class="sec-head">
-      <h2 data-lang="ja">学会発表・論文 / Publications & Presentations</h2>
-      <h2 data-lang="en" style="display:none;">Publications & Presentations</h2>
-      <span class="sub" data-lang="ja">ACADEMIC WORK</span>
-      <span class="sub" data-lang="en" style="display:none;">ACADEMIC WORK</span>
+      <h2><span class="ja">学会発表・論文</span><span class="en">Publications & Presentations</span></h2>
+      <span class="sub"><span class="ja">ACADEMIC WORK</span><span class="en">ACADEMIC WORK</span></span>
     </div>
     <div class="pub-list">
       <div class="pub-item">
-        <div class="pub-title" data-lang="ja">EEGを用いた歩行前後の創造性評価</div>
-        <div class="pub-title" data-lang="en" style="display:none;">Evaluation of Creativity Before and After Walking Using EEG</div>
+        <div class="pub-title"><span class="ja">EEGを用いた歩行前後の創造性評価</span><span class="en">Evaluation of Creativity Before and After Walking Using EEG</span></div>
         <div class="pub-meta">
-          <span class="pub-meta-badge" data-lang="ja">口頭発表</span>
-          <span class="pub-meta-badge" data-lang="en" style="display:none;">Oral Presentation</span>
+          <span class="pub-meta-badge"><span class="ja">口頭発表</span><span class="en">Oral Presentation</span></span>
           <span class="pub-meta-badge">MICoN2025 (15th NU BRAIN)</span>
-          <span class="pub-meta-badge" data-lang="ja">宮古島・2025年10月31日〜11月1日</span>
-          <span class="pub-meta-badge" data-lang="en" style="display:none;">Miyako Island, October 31 - November 1, 2025</span>
+          <span class="pub-meta-badge"><span class="ja">沖縄・宮古島、2025年10月31日〜11月1日</span><span class="en">Okinawa, Miyako Island, October 31 - November 1, 2025</span></span>
         </div>
       </div>
     </div>
@@ -681,36 +662,24 @@
   <!-- ── PREVIOUS RESEARCH ── -->
   <section id="previous" class="anim">
     <div class="sec-head">
-      <h2 data-lang="ja">過去の研究 / Previous Research</h2>
-      <h2 data-lang="en" style="display:none;">Previous Research</h2>
-      <span class="sub" data-lang="ja">UNDERGRADUATE WORK</span>
-      <span class="sub" data-lang="en" style="display:none;">UNDERGRADUATE WORK</span>
+      <h2><span class="ja">過去の研究</span><span class="en">Previous Research</span></h2>
+      <span class="sub"><span class="ja">UNDERGRADUATE WORK</span><span class="en">UNDERGRADUATE WORK</span></span>
     </div>
     <div class="grid2">
       <div class="mini-card">
-        <h3 data-lang="ja">学部研究テーマ / Undergraduate Research Theme</h3>
-        <h3 data-lang="en" style="display:none;">Undergraduate Research Theme</h3>
-        <div class="en" data-lang="ja">Evaluation of the Effects of Walking on Creativity Using EEG</div>
-        <div class="en" data-lang="en" style="display:none;">Evaluation of the Effects of Walking on Creativity Using EEG</div>
-        <p data-lang="ja">
-          脳波を用いた歩行の創造性に及ぼす影響評価。学部時代には，歩行が創造性に与える影響について，脳波を用いた評価に取り組みました。複数の被験者に対して歩行前後の脳波データを計測し，創造性に関連する脳活動パターンの変化を分析しました。
-        </p>
-        <p data-lang="en" style="display:none;">
-          Evaluation of the effects of walking on creativity using EEG. During undergraduate studies, I worked on evaluating the impact of walking on creativity through EEG analysis. I collected EEG data from multiple subjects before and after walking and analyzed changes in brain activity patterns related to creativity.
+        <h3><span class="ja">学部研究テーマ</span><span class="en">Undergraduate Research Theme</span></h3>
+        <div class="en"><span class="ja">Evaluation of the Effects of Walking on Creativity Using EEG</span><span class="en">Evaluation of the Effects of Walking on Creativity Using EEG</span></div>
+        <p>
+          <span class="ja">脳波を用いた歩行の創造性に及ぼす影響評価。学部時代には，歩行が創造性に与える影響について，脳波を用いた評価に取り組みました。</span>
+          <span class="en">Evaluation of the effects of walking on creativity using EEG. I worked on evaluating the impact of walking on creativity through EEG analysis during undergraduate studies.</span>
         </p>
       </div>
       <div class="mini-card">
-        <h3 data-lang="ja">研究資料 / Research PDF</h3>
-        <h3 data-lang="en" style="display:none;">Research PDF</h3>
-        <div class="en" data-lang="ja">Undergraduate Research Document</div>
-        <div class="en" data-lang="en" style="display:none;">Undergraduate Research Document</div>
-        <p data-lang="ja">
-          学部研究に関するPDF資料：<br>
-          <a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 学部研究PDFを閲覧する / View PDF</a>
-        </p>
-        <p data-lang="en" style="display:none;">
-          Undergraduate research PDF document:<br>
-          <a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 View Undergraduate Research PDF</a>
+        <h3><span class="ja">研究資料</span><span class="en">Research PDF</span></h3>
+        <div class="en"><span class="ja">Undergraduate Research Document</span><span class="en">Undergraduate Research Document</span></div>
+        <p>
+          <span class="ja">学部研究に関するPDF資料：<br><a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 学部研究PDFを閲覧する</a></span>
+          <span class="en">Undergraduate research PDF document:<br><a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 View PDF</a></span>
         </p>
       </div>
     </div>
@@ -723,10 +692,8 @@
   <!-- ── SKILLS ── -->
   <section id="skills" class="anim">
     <div class="sec-head">
-      <h2 data-lang="ja">スキル / Skills</h2>
-      <h2 data-lang="en" style="display:none;">Skills</h2>
-      <span class="sub" data-lang="ja">TECHNICAL SKILLS</span>
-      <span class="sub" data-lang="en" style="display:none;">TECHNICAL SKILLS</span>
+      <h2><span class="ja">スキル</span><span class="en">Skills</span></h2>
+      <span class="sub"><span class="ja">TECHNICAL SKILLS</span><span class="en">TECHNICAL SKILLS</span></span>
     </div>
     <div class="tag-grid">
       <span class="tag">Python</span>
@@ -742,56 +709,45 @@
   <!-- ── HOBBIES ── -->
   <section id="hobbies" class="anim">
     <div class="sec-head">
-      <h2 data-lang="ja">趣味・関心 / Hobbies &amp; Interests</h2>
-      <h2 data-lang="en" style="display:none;">Hobbies &amp; Interests</h2>
-      <span class="sub" data-lang="ja">ABOUT ME</span>
-      <span class="sub" data-lang="en" style="display:none;">ABOUT ME</span>
+      <h2><span class="ja">趣味・関心</span><span class="en">Hobbies &amp; Interests</span></h2>
+      <span class="sub"><span class="ja">ABOUT ME</span><span class="en">ABOUT ME</span></span>
     </div>
     <div class="hobby-grid" style="margin-bottom:24px;">
       <div class="hobby-card">
         <div class="hobby-icon">📮</div>
         <div class="hobby-text">
-          <h3 data-lang="ja">切手収集 / Stamp Collecting</h3>
-          <h3 data-lang="en" style="display:none;">Stamp Collecting</h3>
-          <p data-lang="ja">各国の切手を収集しています。歴史や文化が小さな紙に凝縮されていることに魅力を感じています。</p>
-          <p data-lang="en" style="display:none;">I collect stamps from various countries. I'm fascinated by how history and culture are concentrated in these small pieces of paper.</p>
+          <h3><span class="ja">切手収集</span><span class="en">Stamp Collecting</span></h3>
+          <p><span class="ja">各国の切手を収集しています。歴史や文化が小さな紙に凝縮されていることに魅力を感じています。</span><span class="en">I collect stamps from various countries. I'm fascinated by how history and culture are concentrated in these small pieces of paper.</span></p>
         </div>
       </div>
       <div class="hobby-card">
         <div class="hobby-icon">⚽</div>
         <div class="hobby-text">
-          <h3 data-lang="ja">サッカー観戦 / Watching Football</h3>
-          <h3 data-lang="en" style="display:none;">Watching Football</h3>
-          <p data-lang="ja">応援チームはプレミアリーグの<strong>マンチェスター・シティ</strong>。好きな選手は<strong>ケヴィン・デ・ブライネ</strong>。</p>
-          <p data-lang="en" style="display:none;">My favorite team is <strong>Manchester City</strong> in the Premier League. My favorite player is <strong>Kevin De Bruyne</strong>.</p>
+          <h3><span class="ja">サッカー観戦</span><span class="en">Watching Football</span></h3>
+          <p><span class="ja">応援チームはプレミアリーグの<strong>マンチェスター・シティ</strong>。好きな選手は<strong>ケヴィン・デ・ブライネ</strong>。</span><span class="en">My favorite team is <strong>Manchester City</strong> in the Premier League. My favorite player is <strong>Kevin De Bruyne</strong>.</span></p>
         </div>
       </div>
     </div>
 
     <div class="sec-head" style="margin-top:8px;">
-      <h2 style="font-size:1.05rem;" data-lang="ja">好きなゲーム / Favourite Games</h2>
-      <h2 style="font-size:1.05rem;" data-lang="en" style="display:none;">Favourite Games</h2>
-      <span class="sub" data-lang="ja">GAMING</span>
-      <span class="sub" data-lang="en" style="display:none;">GAMING</span>
+      <h2 style="font-size:1.05rem;"><span class="ja">好きなゲーム</span><span class="en">Favourite Games</span></h2>
+      <span class="sub"><span class="ja">GAMING</span><span class="en">GAMING</span></span>
     </div>
     <div class="game-grid">
       <div class="game-card">
         <div class="game-emoji">🌾</div>
         <h3>Stardew Valley</h3>
-        <div class="game-sub" data-lang="ja">スターデューバレー</div>
-        <div class="game-sub" data-lang="en" style="display:none;">Relaxing farming simulator</div>
+        <div class="game-sub"><span class="ja">スターデューバレー</span><span class="en">Relaxing farming simulator</span></div>
       </div>
       <div class="game-card">
         <div class="game-emoji">⚔️</div>
         <h3>Honor of Kings</h3>
-        <div class="game-sub" data-lang="ja">王者荣耀</div>
-        <div class="game-sub" data-lang="en" style="display:none;">Competitive MOBA</div>
+        <div class="game-sub"><span class="ja">王者荣耀</span><span class="en">Competitive MOBA</span></div>
       </div>
       <div class="game-card">
         <div class="game-emoji">🗡️</div>
         <h3>Where Winds Meet</h3>
-        <div class="game-sub" data-lang="ja">燕云十六声</div>
-        <div class="game-sub" data-lang="en" style="display:none;">Chinese action RPG</div>
+        <div class="game-sub"><span class="ja">燕云十六声</span><span class="en">Chinese action RPG</span></div>
       </div>
     </div>
   </section>
@@ -799,26 +755,22 @@
   <!-- ── CONTACT ── -->
   <section id="contact" class="anim">
     <div class="sec-head">
-      <h2 data-lang="ja">連絡先 / Contact</h2>
-      <h2 data-lang="en" style="display:none;">Contact</h2>
-      <span class="sub" data-lang="ja">GET IN TOUCH</span>
-      <span class="sub" data-lang="en" style="display:none;">GET IN TOUCH</span>
+      <h2><span class="ja">連絡先</span><span class="en">Contact</span></h2>
+      <span class="sub"><span class="ja">GET IN TOUCH</span><span class="en">GET IN TOUCH</span></span>
     </div>
     <div class="contact-grid">
       <div class="contact-item">
         <div class="contact-icon">✉️</div>
         <div>
-          <div class="contact-label" data-lang="ja">Email / メール</div>
-          <div class="contact-label" data-lang="en" style="display:none;">Email</div>
+          <div class="contact-label"><span class="ja">Email / メール</span><span class="en">Email</span></div>
           <a class="contact-value" href="mailto:csgo26008@g.nihon-u.ac.jp">csgo26008@g.nihon-u.ac.jp</a>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">🔬</div>
         <div>
-          <div class="contact-label" data-lang="ja">Laboratory / 研究室ページ</div>
-          <div class="contact-label" data-lang="en" style="display:none;">Laboratory</div>
-          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener"><span data-lang="ja">高橋研究室 →</span><span data-lang="en" style="display:none;">Takahashi Lab →</span></a>
+          <div class="contact-label"><span class="ja">Laboratory / 研究室ページ</span><span class="en">Laboratory</span></div>
+          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener"><span class="ja">高橋研究室 →</span><span class="en">Takahashi Lab →</span></a>
         </div>
       </div>
     </div>
@@ -827,8 +779,7 @@
 </main>
 
 <footer>
-  <p data-lang="ja">&copy; 2026 林豪杰 (Lin Haojie) &nbsp;·&nbsp; Last updated: June 2026</p>
-  <p data-lang="en" style="display:none;">&copy; 2026 Lin Haojie &nbsp;·&nbsp; Last updated: June 2026</p>
+  <p><span class="ja">&copy; 2026 林豪杰 (Lin Haojie) &nbsp;·&nbsp; Last updated: June 2026</span><span class="en">&copy; 2026 Lin Haojie &nbsp;·&nbsp; Last updated: June 2026</span></p>
 </footer>
 
 <script>
@@ -841,7 +792,7 @@
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.remove('active');
     });
-    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    document.querySelector(`.lang-btn.${lang}`).classList.add('active');
   }
 
   // Load preferred language on page load
