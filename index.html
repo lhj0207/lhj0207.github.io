@@ -356,24 +356,104 @@
     footer { text-align: center; padding: 24px 24px 40px; font-size: 0.8rem; color: var(--muted); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .hero-top > div:last-child {
+        width: 100%;
+        border-left: none;
+        padding-left: 0;
+      }
+    }
+
     @media (max-width: 760px) {
-      .nav-inner { height: auto; padding: 10px 16px; flex-direction: column; align-items: flex-start; gap: 6px; }
-      main { padding: 20px 14px 60px; }
-      .hero-top { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px 18px; }
+      .nav-inner { 
+        height: auto; 
+        padding: 12px 16px; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 10px; 
+      }
+      nav ul {
+        gap: 6px;
+        justify-content: flex-start;
+      }
+      nav ul li a {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+      }
+      main { padding: 24px 14px 60px; }
+      .hero-top { 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 16px; 
+        padding: 20px 16px;
+      }
+      .hero-top > div:first-child {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+        text-align: center;
+      }
+      .hero-top > div:first-child .hero-info {
+        text-align: left;
+      }
+      .avatar { width: 72px; height: 72px; font-size: 1.6rem; }
       .hero-bottom { grid-template-columns: 1fr; }
-      section { padding: 22px 18px; }
-      .research-layout { grid-template-columns: 1fr; }
-      .research-img { max-width: 100%; }
+      section { padding: 22px 16px; }
+      .research-layout { 
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .research-img { 
+        max-width: 100%;
+        min-height: 150px;
+      }
       .grid2, .hobby-grid, .contact-grid { grid-template-columns: 1fr; }
       .game-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
       .sec-head h2 { font-size: 1.05rem; }
+      .btn-row {
+        gap: 8px;
+        width: 100%;
+      }
+      .btn {
+        flex: 1;
+        justify-content: center;
+        height: 42px;
+        font-size: 0.8rem;
+        min-width: 0;
+      }
       #profile .info-dl { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
       #profile .info-row { border-right: none !important; border-bottom: 1px solid var(--soft) !important; }
       #profile .info-row:last-child { border-bottom: none !important; }
     }
-    @media (max-width: 420px) {
-      .avatar { width: 64px; height: 64px; font-size: 1.5rem; }
+
+    @media (max-width: 480px) {
+      .nav-inner {
+        padding: 10px 12px;
+      }
+      .site-name {
+        font-size: 0.9rem;
+      }
+      nav ul li a {
+        font-size: 0.7rem;
+        padding: 5px 8px;
+      }
+      .avatar { width: 60px; height: 60px; font-size: 1.4rem; }
+      .hero-info h1 { font-size: 1.5rem; }
+      .hero-subtitle { font-size: 0.85rem; }
       .game-grid { grid-template-columns: 1fr; }
+      .sec-head h2 { font-size: 1rem; }
+      .btn {
+        height: 40px;
+        font-size: 0.75rem;
+        padding: 0 14px;
+      }
+      section { padding: 18px 14px; }
+      main { padding: 18px 12px 50px; }
     }
   </style>
 </head>
@@ -387,11 +467,11 @@
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="#profile">プロフィール</a></li>
-        <li><a href="#research">研究 / Research</a></li>
+        <li><a href="#research">研究</a></li>
         <li><a href="#previous">過去の研究</a></li>
-        <li><a href="#skills">スキル / Skills</a></li>
-        <li><a href="#hobbies">趣味 / Hobbies</a></li>
-        <li><a href="#contact">連絡先 / Contact</a></li>
+        <li><a href="#skills">スキル</a></li>
+        <li><a href="#hobbies">趣味</a></li>
+        <li><a href="#contact">連絡先</a></li>
       </ul>
     </nav>
   </div>
@@ -416,8 +496,8 @@
           <em>Research interests include EEG-based attention assessment, cognitive state estimation, and driving support systems.</em>
         </p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="#research">研究内容を見る / Research</a>
-          <a class="btn btn-outline" href="mailto:csgo26008@g.nihon-u.ac.jp">連絡する / Contact</a>
+          <a class="btn btn-primary" href="#research">研究を見る</a>
+          <a class="btn btn-outline" href="mailto:csgo26008@g.nihon-u.ac.jp">連絡する</a>
         </div>
       </div>
     </div>
@@ -447,7 +527,7 @@
           <span class="en">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span>
         </h3>
         <p>
-          運転中の注意力に対して帯電微粒子水がどのような影響を及ぼすかを、脳波を用いて評価することを目的としています。EEGデータを通して、様々な認知指標を計測・分析し、科学的根拠に基づいた評価を行います。<br>
+          運転中の注意力に対して帯電微粒子水がどのような影響を及ぼすかを、脳波を用いて評価することを目的としています。EEGデータを通して、…<br>
           <em>This study aims to objectively assess changes in human cognitive state and attention during driving using EEG signals, focusing on the influence of charged fine particle water.</em>
         </p>
         <div class="note-box">
@@ -491,7 +571,7 @@
     </div>
     <div class="prev-img has-img">
       <img src="images/undergraduate-research.jpg" alt="学部研究の様子"
-           onerror="this.parentElement.classList.remove('has-img'); this.outerHTML='<div class=\'slot-icon\'>🚶</div><div class=\'slot-label\'>Undergraduate Research Image（任意 / Optional）</div>';">
+           onerror="this.parentElement.classList.remove('has-img'); this.outerHTML='<div class=\'slot-icon\'>🚶</div><div class=\'slot-label\'>Undergraduate Research Image</div>';">
     </div>
   </section>
 
@@ -523,7 +603,7 @@
         <div class="hobby-icon">📮</div>
         <div class="hobby-text">
           <h3>切手収集 / Stamp Collecting</h3>
-          <p>各国の切手を収集しています。歴史や文化が小さな紙に凝縮されていることに魅力を感じています。<br><em>Collecting stamps from various countries — fascinated by how history and culture are compressed onto small pieces of paper.</em></p>
+          <p>各国の切手を収集しています。歴史や文化が小さな紙に凝縮されていることに魅力を感じています。</p>
         </div>
       </div>
       <div class="hobby-card">
@@ -531,8 +611,7 @@
         <div class="hobby-text">
           <h3>サッカー観戦 / Watching Football</h3>
           <p>
-            応援チームはプレミアリーグの<strong>マンチェスター・シティ</strong>。好きな選手は<strong>ケヴィン・デ・ブライネ</strong>（現在はセリエAのナポリ所属）。<br>
-            <em>Supporting Manchester City in the Premier League. Favourite player: Kevin De Bruyne — now at Napoli (Serie A), captain of the Belgium national team.</em>
+            応援チームはプレミアリーグの<strong>マンチェスター・シティ</strong>。好きな選手は<strong>ケヴィン・デ・ブライネ</strong>。
           </p>
         </div>
       </div>
@@ -546,7 +625,7 @@
       <div class="game-card">
         <div class="game-emoji">🌾</div>
         <h3>Stardew Valley</h3>
-        <div class="game-sub">スターデューバレー<br>星露谷物语</div>
+        <div class="game-sub">スターデューバレー</div>
       </div>
       <div class="game-card">
         <div class="game-emoji">⚔️</div>
@@ -556,7 +635,7 @@
       <div class="game-card">
         <div class="game-emoji">🗡️</div>
         <h3>Where Winds Meet</h3>
-        <div class="game-sub">風燕伝<br>燕云十六声</div>
+        <div class="game-sub">燕云十六声</div>
       </div>
     </div>
   </section>
@@ -568,7 +647,7 @@
       <span class="sub">ONGOING WORK</span>
     </div>
     <p style="font-size:0.93rem; color:var(--muted);">
-      EEGを用いた注意力・創造性評価に関連する実験、データ分析、プログラミングに取り組んでいます。公開可能なコードや成果物は、今後このページにリンクを貼る予定です。<br>
+      EEGを用いた注意力・創造性評価に関連する実験、データ分析、プログラミングに取り組んでいます。公開可能なコードや成果物は、今後このページで共有する予定です。
       <em>Working on EEG-based experiments, data analysis, and programming. Publishable code and results will be linked here in the future.</em>
     </p>
   </section>
@@ -591,7 +670,7 @@
         <div class="contact-icon">🔬</div>
         <div>
           <div class="contact-label">Laboratory / 研究室ページ</div>
-          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener">高橋研究室 個人ページ →</a>
+          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener">高橋研究室 →</a>
         </div>
       </div>
     </div>
