@@ -3,432 +3,734 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="林豪杰の研究ポートフォリオサイト">
+  <meta name="description" content="林豪杰の研究ポートフォリオ — 日本大学大学院 脳波・認知科学">
   <title>林豪杰 | Research Portfolio</title>
   <style>
     :root {
-      --bg: #f6f7f4;
-      --surface: #ffffff;
-      --text: #1f2933;
-      --muted: #5f6c7b;
-      --line: #d8ded5;
-      --accent: #0f766e;
-      --accent-dark: #115e59;
-      --soft: #e7f0ed;
-      --shadow: 0 14px 32px rgba(31, 41, 51, 0.08);
+      --bg:       #f6f7f4;
+      --surface:  #ffffff;
+      --text:     #1f2933;
+      --muted:    #5f6c7b;
+      --line:     #d8ded5;
+      --accent:   #0f766e;
+      --accent-d: #115e59;
+      --accent-l: #e7f0ed;
+      --soft:     #f0f5f2;
+      --shadow:   0 4px 24px rgba(15,118,110,0.07);
+      --r:        8px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
-      color: var(--text);
       background: var(--bg);
-      line-height: 1.7;
+      color: var(--text);
+      line-height: 1.75;
     }
 
-    a {
-      color: var(--accent-dark);
-      text-decoration: none;
+    a { color: var(--accent-d); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes slideRight {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
     }
 
-    a:hover,
-    a:focus {
-      text-decoration: underline;
+    .anim { opacity: 0; }
+    .anim.visible {
+      animation: fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
     }
+    .anim-d1 { animation-delay: 0.05s; }
+    .anim-d2 { animation-delay: 0.13s; }
+    .anim-d3 { animation-delay: 0.21s; }
+    .anim-d4 { animation-delay: 0.29s; }
 
+    /* ── NAV ── */
     header {
       background: var(--surface);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
+      animation: fadeIn 0.4s ease forwards;
     }
-
-    .nav {
-      max-width: 1040px;
+    .nav-inner {
+      max-width: 1060px;
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 0 24px;
+      height: 56px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
+      gap: 16px;
     }
-
     .site-name {
       font-weight: 700;
-      letter-spacing: 0;
+      color: var(--text);
       white-space: nowrap;
+      font-size: 1rem;
     }
-
+    .site-name em {
+      font-style: normal;
+      color: var(--accent);
+    }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 18px;
-      margin: 0;
-      padding: 0;
-      font-size: 0.95rem;
+      gap: 4px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
-
-    main {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 42px 24px 64px;
+    nav ul li a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
+      display: block;
+    }
+    nav ul li a:hover {
+      background: var(--accent-l);
+      color: var(--accent-d);
+      text-decoration: none;
     }
 
+    /* progress bar */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s linear;
+      transform-origin: left;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── HERO ── */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
-      gap: 30px;
-      align-items: stretch;
+      grid-template-columns: minmax(0,1.3fr) 300px;
+      gap: 24px;
+      align-items: start;
       margin-bottom: 28px;
     }
-
-    .hero-text,
-    .info-panel,
-    section {
+    .card {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--r);
       box-shadow: var(--shadow);
     }
-
     .hero-text {
-      padding: 36px;
+      padding: 36px 36px 32px;
+    }
+
+    /* avatar row */
+    .avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .avatar img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .avatar-name h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+    .avatar-name .en {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 3px;
     }
 
     .eyebrow {
-      display: inline-block;
-      color: var(--accent-dark);
-      background: var(--soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-l);
+      color: var(--accent-d);
       border-radius: 999px;
-      padding: 4px 12px;
-      font-size: 0.9rem;
+      padding: 4px 14px;
+      font-size: 0.8rem;
       font-weight: 700;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
-
-    h1 {
-      font-size: clamp(2.1rem, 5vw, 3.5rem);
-      line-height: 1.15;
-      margin: 0 0 14px;
-      letter-spacing: 0;
+    .eyebrow::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(0.8); }
     }
 
     .subtitle {
-      font-size: 1.12rem;
+      font-size: 0.97rem;
       color: var(--muted);
-      margin: 0 0 24px;
+      margin-bottom: 26px;
+      max-width: 540px;
+    }
+    .subtitle em {
+      font-style: italic;
+      font-size: 0.88rem;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .button {
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 9px 16px;
+      height: 40px;
+      padding: 0 20px;
       border-radius: 6px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #ffffff;
+      font-size: 0.875rem;
       font-weight: 700;
       text-decoration: none;
+      transition: filter 0.15s, transform 0.12s;
     }
+    .btn:hover { filter: brightness(0.93); transform: translateY(-1px); text-decoration: none; }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-outline  { background: #fff; color: var(--accent-d); border: 1.5px solid var(--accent); }
 
-    .button.secondary {
-      background: #ffffff;
-      color: var(--accent-dark);
+    /* ── PROFILE PANEL ── */
+    .profile-panel {
+      border-radius: var(--r);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
-
-    .button:hover,
-    .button:focus {
-      text-decoration: none;
-      filter: brightness(0.98);
+    .panel-head {
+      background: var(--accent);
+      padding: 14px 22px;
     }
-
-    .info-panel {
-      padding: 28px;
-    }
-
-    .info-panel h2 {
-      margin-top: 0;
-    }
-
-    .info-list {
-      display: grid;
-      gap: 14px;
+    .panel-head h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
       margin: 0;
     }
-
-    .info-list div {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 12px;
-    }
-
-    .info-list div:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .info-list dt {
-      font-size: 0.82rem;
-      color: var(--muted);
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .info-list dd {
+    .panel-head p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.06em;
       margin: 2px 0 0;
+    }
+    .info-dl { padding: 6px 0; }
+    .info-row {
+      padding: 11px 22px;
+      border-bottom: 1px solid var(--soft);
+      transition: background 0.15s;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row:hover { background: var(--soft); }
+    .info-row dt {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .info-row dd {
+      font-size: 0.88rem;
       font-weight: 600;
+      color: var(--text);
+    }
+    .info-row dd.sub {
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.8rem;
     }
 
+    /* ── SECTIONS ── */
     section {
-      padding: 30px;
-      margin-top: 22px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: 32px 36px;
+      margin-bottom: 22px;
+    }
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .sec-head h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .sec-head .sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
     }
 
-    h2 {
-      font-size: 1.45rem;
-      margin: 0 0 16px;
-      letter-spacing: 0;
+    /* accent bar on section top */
+    section {
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0;
+      background: var(--accent);
+      transform-origin: left;
+      transition: width 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    section.visible::before { width: 100%; }
+
+    /* ── RESEARCH CARD ── */
+    .research-card {
+      border-left: 3px solid var(--accent);
+      padding-left: 18px;
+      margin-bottom: 18px;
+    }
+    .research-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .research-card h3 .en {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .research-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 10px;
     }
 
-    h3 {
-      font-size: 1.05rem;
-      margin: 22px 0 8px;
+    /* ── IMAGE SLOT ── */
+    .img-slot {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      margin: 18px 0 6px;
+      color: var(--muted);
+      text-align: center;
+      min-height: 140px;
+    }
+    .img-slot img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
+    .img-slot.has-img {
+      padding: 0;
+      background: transparent;
+    }
+    .slot-icon { font-size: 2.2rem; margin-bottom: 6px; }
+    .slot-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); letter-spacing: 0.05em; }
+    .img-caption {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 4px;
+      font-style: italic;
     }
 
-    p {
-      margin: 0 0 14px;
+    /* ── NOTE BOX ── */
+    .note-box {
+      background: var(--accent-l);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      color: var(--accent-d);
+      margin-top: 16px;
     }
 
-    .grid {
+    /* ── GRID 2 ── */
+    .grid2 {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 18px;
     }
-
     .mini-card {
       border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 18px;
-      background: #fbfcfa;
-    }
-
-    .tag-list {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-
-    .tag-list li {
+      border-radius: 6px;
+      padding: 20px;
       background: var(--soft);
-      color: var(--accent-dark);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .mini-card:hover {
+      box-shadow: 0 6px 20px rgba(15,118,110,0.1);
+      transform: translateY(-2px);
+    }
+    .mini-card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 3px; }
+    .mini-card .en { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+    .mini-card p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── SKILLS ── */
+    .tag-grid { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      background: var(--accent-l);
       border: 1px solid #c8dfd9;
+      color: var(--accent-d);
       border-radius: 999px;
-      padding: 5px 12px;
+      padding: 5px 14px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.85rem;
+      transition: background 0.15s, transform 0.15s;
+      cursor: default;
+    }
+    .tag:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
-    .note {
-      color: var(--muted);
-      font-size: 0.95rem;
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
     }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .contact-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(15,118,110,0.1);
+    }
+    .contact-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: var(--accent-l);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
+    .contact-value { font-size: 0.88rem; font-weight: 600; color: var(--accent-d); }
 
+    /* ── FOOTER ── */
     footer {
       text-align: center;
+      padding: 28px 24px 40px;
+      font-size: 0.82rem;
       color: var(--muted);
-      padding: 28px 24px 38px;
-      font-size: 0.92rem;
     }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 760px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav ul {
-        justify-content: flex-start;
-        gap: 12px;
-      }
-
-      main {
-        padding: 26px 16px 48px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-text,
-      .info-panel,
-      section {
-        padding: 22px;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-inner { height: auto; padding: 10px 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+      nav ul { gap: 2px; }
+      main { padding: 24px 16px 60px; }
+      .hero { grid-template-columns: 1fr; }
+      section, .hero-text { padding: 22px 18px; }
+      .grid2, .contact-grid { grid-template-columns: 1fr; }
+      .sec-head h2 { font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      .avatar { width: 64px; height: 64px; font-size: 1.5rem; }
+      .avatar-row { gap: 12px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="site-name">林豪杰 | Research Portfolio</div>
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="#profile">Profile</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#previous-research">Previous Research</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <div class="hero">
-      <div class="hero-text">
-        <span class="eyebrow">Master's Student Portfolio</span>
-        <h1>林豪杰</h1>
-        <p class="subtitle">
-          日本大学大学院 理工学研究科 情報科学専攻に所属し、脳波を用いた人間の注意力や認知状態の評価に関心を持っています。
-        </p>
-        <div class="hero-actions">
-          <a class="button" href="#research">Research</a>
-          <a class="button secondary" href="mailto:csgo26008@g.nihon-u.ac.jp">Contact</a>
+<div id="progress"></div>
+
+<header>
+  <div class="nav-inner">
+    <div class="site-name">林豪杰 <em>|</em> Research Portfolio</div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#profile">プロフィール / Profile</a></li>
+        <li><a href="#research">研究 / Research</a></li>
+        <li><a href="#previous">過去の研究 / Previous</a></li>
+        <li><a href="#skills">スキル / Skills</a></li>
+        <li><a href="#contact">連絡先 / Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+
+    <div class="card hero-text anim anim-d1">
+      <div class="avatar-row">
+        <div class="avatar">
+          <img src="images/avatar.jpg" alt="林豪杰"
+               onerror="this.outerHTML='林';">
+        </div>
+        <div class="avatar-name">
+          <h1>林 豪杰</h1>
+          <div class="en">LIN HAOJIE</div>
         </div>
       </div>
 
-      <aside class="info-panel" id="profile" aria-labelledby="profile-title">
-        <h2 id="profile-title">Profile</h2>
-        <dl class="info-list">
-          <div>
-            <dt>Name</dt>
-            <dd>林豪杰</dd>
+      <div class="eyebrow">修士課程 / Master's Student</div>
+
+      <p class="subtitle">
+        日本大学大学院 理工学研究科 情報科学専攻（高橋研究室）に所属。脳波（EEG）を用いた人間の注意力・認知状態の評価を研究しています。<br>
+        <em>Graduate School of Science and Technology, Nihon University. Research on EEG-based evaluation of human attention and cognitive state.</em>
+      </p>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#research">研究内容を見る / Research</a>
+        <a class="btn btn-outline" href="mailto:csgo26008@g.nihon-u.ac.jp">連絡する / Contact</a>
+      </div>
+    </div>
+
+    <aside id="profile" class="anim anim-d2">
+      <div class="profile-panel">
+        <div class="panel-head">
+          <h2>プロフィール / Profile</h2>
+          <p>PERSONAL INFORMATION</p>
+        </div>
+        <dl class="info-dl">
+          <div class="info-row">
+            <dt>氏名 / Name</dt>
+            <dd>林 豪杰</dd>
+            <dd class="sub">Lin Haojie</dd>
           </div>
-          <div>
-            <dt>Affiliation</dt>
-            <dd>日本大学大学院 理工学研究科 情報科学専攻</dd>
+          <div class="info-row">
+            <dt>出身地 / Origin</dt>
+            <dd>中国 福建省</dd>
+            <dd class="sub">China, Fujian Province</dd>
           </div>
-          <div>
-            <dt>Laboratory</dt>
+          <div class="info-row">
+            <dt>所属 / Affiliation</dt>
+            <dd>日本大学大学院<br>理工学研究科 情報科学専攻</dd>
+            <dd class="sub">Nihon University, Graduate School of Science and Technology</dd>
+          </div>
+          <div class="info-row">
+            <dt>研究室 / Laboratory</dt>
             <dd>高橋研究室</dd>
+            <dd class="sub">Takahashi Laboratory</dd>
           </div>
-          <div>
-            <dt>Research Area</dt>
-            <dd>EEG, Human Attention, Driving Support</dd>
+          <div class="info-row">
+            <dt>研究分野 / Research Area</dt>
+            <dd>EEG · 注意力評価 · 運転支援</dd>
+            <dd class="sub">EEG · Human Attention · Driving Support</dd>
           </div>
         </dl>
-      </aside>
+      </div>
+    </aside>
+  </div>
+
+  <!-- RESEARCH -->
+  <section id="research" class="anim anim-d3">
+    <div class="sec-head">
+      <h2>現在の研究 / Current Research</h2>
+      <span class="sub">RESEARCH THEME</span>
     </div>
 
-    <section id="research" aria-labelledby="research-title">
-      <h2 id="research-title">Research</h2>
-      <h3>Current Research Theme</h3>
+    <div class="research-card">
+      <h3>
+        脳波を用いた帯電微粒子水が運転中の注意力に及ぼす影響評価<br>
+        <span class="en">Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</span>
+      </h3>
       <p>
-        脳波を用いた帯電微粒子水が運転中の注意力に及ぼす影響評価
+        運転中の注意力に対して帯電微粒子水がどのような影響を及ぼすかを、脳波を用いて評価することを目的としています。EEGデータを通して、人間の注意状態や認知的変化を客観的に捉える手法を研究しています。<br>
+        <em>This study aims to objectively assess changes in human cognitive state and attention during driving using EEG signals, focusing on the influence of charged fine particle water.</em>
       </p>
-      <p>
-        <strong>Evaluation of the Effects of Charged Fine Particle Water on Driving Attention Using EEG</strong>
-      </p>
-      <p>
-        本研究では、運転中の注意力に対して帯電微粒子水がどのような影響を及ぼすかを、脳波を用いて評価することを目的としています。
-        EEGデータを通して、人間の注意状態や認知的変化を客観的に捉える方法に関心があります。
-      </p>
-      <p class="note">
-        研究内容は公開可能な範囲で記載しています。詳細な実験条件や未発表データは掲載していません。
-      </p>
-    </section>
+    </div>
 
-    <section id="previous-research" aria-labelledby="previous-research-title">
-      <h2 id="previous-research-title">Previous Research</h2>
-      <div class="grid">
-        <div class="mini-card">
-          <h3>Undergraduate Research Theme</h3>
-          <p>
-            脳波を用いた歩行の創造性に及ぼす影響評価
-          </p>
-          <p>
-            <strong>Evaluation of the Effects of Walking on Creativity Using EEG</strong>
-          </p>
-          <p>
-            学部時代には、歩行が創造性に与える影響について、脳波を用いた評価に取り組みました。
-          </p>
-        </div>
-        <div class="mini-card">
-          <h3>Research PDF</h3>
-          <p>
-            学部研究に関するPDF資料は、公開可能な内容であることを確認したうえで掲載します。
-          </p>
-          <p>
-            <a href="pdf/undergraduate-research.pdf">View undergraduate research PDF</a>
-          </p>
-          <p class="note">
-            PDFをアップロードした後、ファイル名をこのリンクと一致させてください。
-          </p>
+    <div class="img-slot has-img" id="eeg-slot">
+      <img src="images/eeg-research.png" alt="EEG実験の様子 / EEG experiment setup"
+           onerror="this.parentElement.classList.remove('has-img'); this.outerHTML='<div class=\'slot-icon\'>🧠</div><div class=\'slot-label\'>EEG Research Image</div><div class=\'slot-hint\'>images/eeg-research.jpg</div>';">
+    </div>
+    <p class="img-caption">EEG実験の様子 / EEG experiment setup</p>
+
+    <div class="note-box">
+      📌 研究内容は公開可能な範囲で記載しています。詳細な実験条件や未発表データは掲載していません。<br>
+      <em style="font-size:0.82rem;">Only publicly shareable content is described here. Detailed experimental conditions and unpublished data are not included.</em>
+    </div>
+  </section>
+
+  <!-- PREVIOUS RESEARCH -->
+  <section id="previous" class="anim">
+    <div class="sec-head">
+      <h2>過去の研究 / Previous Research</h2>
+      <span class="sub">UNDERGRADUATE WORK</span>
+    </div>
+
+    <div class="grid2">
+      <div class="mini-card">
+        <h3>学部研究テーマ / Undergraduate Research Theme</h3>
+        <div class="en">Evaluation of the Effects of Walking on Creativity Using EEG</div>
+        <p>
+          脳波を用いた歩行の創造性に及ぼす影響評価。学部時代には、歩行が創造性に与える影響について、脳波を用いた評価に取り組みました。<br>
+          <em>Research focused on evaluating the effects of walking on creativity through EEG analysis.</em>
+        </p>
+      </div>
+      <div class="mini-card">
+        <h3>研究資料 / Research PDF</h3>
+        <div class="en">Undergraduate Research Document</div>
+        <p>
+          学部研究に関するPDF資料：<br>
+          <a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 学部研究PDFを閲覧する / View PDF</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="img-slot has-img" style="margin-top:22px;">
+      <img src="images/undergraduate-research.jpg" alt="学部研究の様子 / Undergraduate research"
+           onerror="this.parentElement.classList.remove('has-img'); this.outerHTML='<div class=\'slot-icon\'>🚶</div><div class=\'slot-label\'>Undergraduate Research Image（任意 / Optional）</div>';">
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="anim">
+    <div class="sec-head">
+      <h2>スキル / Skills</h2>
+      <span class="sub">TECHNICAL SKILLS</span>
+    </div>
+    <div class="tag-grid">
+      <span class="tag">Python</span>
+      <span class="tag">C</span>
+      <span class="tag">C++</span>
+      <span class="tag">Java</span>
+      <span class="tag">EEG</span>
+      <span class="tag">NIRS</span>
+      <span class="tag">GitHub</span>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="anim">
+    <div class="sec-head">
+      <h2>プロジェクト / Projects</h2>
+      <span class="sub">ONGOING WORK</span>
+    </div>
+    <p style="font-size:0.95rem; color:var(--muted);">
+      EEGを用いた注意力・創造性評価に関連する実験、データ分析、プログラミングに取り組んでいます。公開可能なコードや成果物は、今後このページから参照できるように更新する予定です。<br>
+      <em>Working on EEG-based experiments, data analysis, and programming related to attention and creativity evaluation. Publishable code and results will be linked here in the future.</em>
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="anim">
+    <div class="sec-head">
+      <h2>連絡先 / Contact</h2>
+      <span class="sub">GET IN TOUCH</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email / メール</div>
+          <a class="contact-value" href="mailto:csgo26008@g.nihon-u.ac.jp">csgo26008@g.nihon-u.ac.jp</a>
         </div>
       </div>
-    </section>
+      <div class="contact-item">
+        <div class="contact-icon">🔬</div>
+        <div>
+          <div class="contact-label">Laboratory / 研究室ページ</div>
+          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener">
+            高橋研究室 個人ページ →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="skills" aria-labelledby="skills-title">
-      <h2 id="skills-title">Skills</h2>
-      <ul class="tag-list">
-        <li>Python</li>
-        <li>C</li>
-        <li>C++</li>
-        <li>Java</li>
-        <li>EEG</li>
-        <li>NITRS</li>
-        <li>GitHub</li>
-      </ul>
-    </section>
+</main>
 
-    <section id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-      <p>
-        EEGを用いた注意力・創造性評価に関連する実験、データ分析、プログラミングに取り組んでいます。
-        公開可能なコードや成果物は、今後このページから参照できるように更新する予定です。
-      </p>
-    </section>
+<footer>
+  <p>&copy; 2026 林豪杰 (Lin Haojie) &nbsp;·&nbsp; Last updated: June 2026</p>
+</footer>
 
-    <section id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p>
-        Email:
-        <a href="mailto:csgo26008@g.nihon-u.ac.jp">csgo26008@g.nihon-u.ac.jp</a>
-      </p>
-      <p>
-        Laboratory Profile:
-        <a href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805">高橋研究室 個人ページ</a>
-      </p>
-    </section>
-  </main>
+<script>
+  // Scroll progress bar
+  const prog = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const s = document.documentElement;
+    const pct = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+    prog.style.width = pct + '%';
+  }, { passive: true });
 
-  <footer>
-    <p>&copy; 2026 林豪杰. Last updated: June 2026.</p>
-  </footer>
+  // Intersection observer: fade-up on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // trigger section top bar
+        if (e.target.tagName === 'SECTION') e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.anim, section').forEach(el => obs.observe(el));
+
+  // Hero animates immediately on load
+  document.querySelectorAll('.anim').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+</script>
+
 </body>
 </html>
