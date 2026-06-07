@@ -121,6 +121,27 @@
     }
     nav ul li a:hover { background: var(--accent-l); color: var(--accent-d); text-decoration: none; }
 
+    
+    /* Responsive navigation */
+    .nav-inner > div:last-child{
+      min-width:0;
+      flex:1;
+    }
+    nav{
+      min-width:0;
+      flex:1;
+    }
+    nav ul{
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      scrollbar-width:thin;
+      white-space:nowrap;
+    }
+    nav ul::-webkit-scrollbar{
+      height:4px;
+    }
+
+
     /* ── MAIN ── */
     main { max-width: 1060px; margin: 0 auto; padding: 44px 24px 80px; }
 
@@ -633,16 +654,16 @@
         </h3>
         <p>
           <span class="ja">
-            <strong>研究背景：</strong> 交通事故の多くはドライバーのヒューマンエラーに起因しており、特に長時間運転では注意力低下が重要な要因となっています。先行研究により、室内空気質が人の認知機能に影響することが明らかにされており、車室内の空気環境がドライバーの注意力に関与する可能性が考えられます。帯電微粒子水は空気質改善に用いられていますが、運転注意力への影響は十分に検証されていません。<br>
-            <strong>研究目的：</strong> 脳波（EEG）を用いて、帯電微粒子水がドライバーの運転中注意力に及ぼす影響を客観的に評価することです。
+            <strong>研究背景：</strong> 交通事故の多くはドライバーの注意力低下を伴うヒューマンエラーに起因している。また，車室内の空気環境は認知機能や作業効率に影響を与える可能性が指摘されている。<br>
+            <strong>研究目的：</strong> 帯電微粒子水による車室内環境の変化が運転中の注意力に及ぼす影響を，脳波（EEG）を用いて客観的に評価する。
           </span>
           <span class="en">
-            <strong>Background:</strong> Traffic accidents are frequently caused by driver error, with attention decline being a critical factor during prolonged driving. Previous research demonstrates that indoor air quality affects human cognitive function. We investigate whether vehicle cabin air conditions influence driver attention. While charged fine particle water is used for air quality improvement, its effects on driving attention have not been adequately validated.<br>
-            <strong>Objective:</strong> To objectively evaluate how charged fine particle water impacts driver attention during driving by analyzing EEG (electroencephalography) signals.
+            <strong>Background:</strong> Many traffic accidents are caused by human errors associated with reduced driver attention. Previous studies have suggested that in-vehicle air quality may affect cognitive performance and task efficiency.<br>
+            <strong>Objective:</strong> To objectively evaluate the effects of changes in the in-vehicle environment caused by charged water particles on driver attention using electroencephalography (EEG).
           </span>
           <span class="zh">
-            <strong>研究背景：</strong> 交通事故通常由驾驶员人为错误引起，长时间驾驶中注意力下降是关键因素。先前研究表明室内空气质量会影响人的认知功能。我们研究车厢内的空气条件是否会影响驾驶员注意力。虽然带电微粒子水被用于改善空气质量，但其对驾驶注意力的影响尚未得到充分验证。<br>
-            <strong>研究目的：</strong> 通过分析脑电图（EEG）信号，客观评估带电微粒子水对驾驶员驾驶注意力的影响。
+            <strong>研究背景：</strong> 许多交通事故源于驾驶员注意力下降导致的人为失误。此外，研究表明车内空气环境可能影响人的认知功能和作业表现。<br>
+            <strong>研究目的：</strong> 利用脑电图（EEG）客观评估带电微粒子水引起的车内环境变化对驾驶注意力的影响。
           </span>
         </p>
         <div class="note-box">
