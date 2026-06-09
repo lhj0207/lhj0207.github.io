@@ -616,21 +616,19 @@
 
     <div style="border-left:1px solid var(--line);padding-left:28px;display:flex;align-items:center;">
       <dl class="info-dl" style="width:100%;">
-        <div class="info-row">
-          <dt><span class="ja">出身地 / Origin</span><span class="en">Origin</span><span class="zh">籍贯 / Origin</span></dt>
-          <dd><span class="ja">中国 福建省</span><span class="en">Fujian, China</span><span class="zh">中国 福建省</span></dd>
-        </div>
+        
         <div class="info-row">
           <dt><span class="ja">所属 / Affiliation</span><span class="en">Affiliation</span><span class="zh">所属机构 / Affiliation</span></dt>
           <dd><span class="ja">日本大学大学院 理工学研究科 情報科学専攻</span><span class="en">Nihon University, Graduate School of Science and Engineering, Computer Science</span><span class="zh">日本大学理工学研究科信息科学专业</span></dd>
         </div>
         <div class="info-row">
           <dt><span class="ja">研究室 / Laboratory</span><span class="en">Laboratory</span><span class="zh">实验室 / Laboratory</span></dt>
-          <dd><span class="ja">高橋研究室</span><span class="en">Takahashi Lab</span><span class="zh">高桥实验室</span></dd>
+          <dd><span class="ja">高橋・福田研究室</span><span class="en">Takahashi-Fukuda Lab</span><span class="zh">高桥・福田实验室</span></dd>
         </div>
         <div class="info-row">
           <dt><span class="ja">研究分野 / Research Area</span><span class="en">Research Area</span><span class="zh">研究领域 / Research Area</span></dt>
-          <dd>EEG・Attention Assessment</dd>
+          <dd>EEG・Attention Assessment・Cognitive State Estimation</dd></div>
+        <div class="info-row"><dt><span class="ja">出身地 / Origin</span><span class="en">Origin</span><span class="zh">籍贯 / Origin</span></dt><dd><span class="ja">中国 福建省</span><span class="en">Fujian, China</span><span class="zh">中国 福建省</span></dd></div>
         </div>
       </dl>
     </div>
@@ -706,31 +704,45 @@
       <h2><span class="ja">過去の研究</span><span class="en">Previous Research</span><span class="zh">过去的研究</span></h2>
       <span class="sub"><span class="ja">UNDERGRADUATE WORK</span><span class="en">UNDERGRADUATE WORK</span><span class="zh">本科工作</span></span>
     </div>
-    <div class="grid2">
-      <div class="mini-card">
-        <h3><span class="ja">学部研究テーマ</span><span class="en">Undergraduate Research Theme</span><span class="zh">本科研究课题</span></h3>
-        <div class="en"><span class="ja">Evaluation of the Effects of Walking on Creativity Using EEG</span><span class="en">Evaluation of the Effects of Walking on Creativity Using EEG</span><span class="zh">使用脑电图评估行走对创造力的影响</span></div>
-        <p>
-          <span class="ja">脳波を用いた歩行の創造性に及ぼす影響評価。学部時代には、歩行が創造性に与える影響について、脳波を用いた定量的評価に取り組みました。</span>
-          <span class="en">Evaluation of the effects of walking on creativity using EEG. I conducted quantitative EEG analysis to assess the impact of walking on creative thinking during undergraduate studies.</span>
-          <span class="zh">使用脑电图评估行走对创造力的影响。在本科期间，我进行了定量脑电图分析，以评估行走对创意思维的影响。</span>
-        </p>
-      </div>
-      <div class="mini-card">
-        <h3><span class="ja">研究資料</span><span class="en">Research PDF</span><span class="zh">研究资料</span></h3>
-        <div class="en"><span class="ja">Undergraduate Research Document</span><span class="en">Undergraduate Research Document</span><span class="zh">本科研究文档</span></div>
-        <p>
-          <span class="ja">学部研究に関するPDF資料：<br><a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 学部研究PDFを閲覧する</a></span>
-          <span class="en">Undergraduate research PDF document:<br><a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 View PDF</a></span>
-          <span class="zh">本科研究PDF文档：<br><a href="pdf/undergraduate-research.pdf" style="font-weight:700;">📄 查看PDF</a></span>
-        </p>
-      </div>
+    
+<div class="grid2">
+  <div class="mini-card" style="grid-column:1/-1">
+    <h3><span class="ja">学部研究テーマ</span><span class="en">Undergraduate Research Theme</span><span class="zh">本科研究课题</span></h3>
+    <div class="en">Evaluation of the Effects of Walking on Creativity Using EEG</div>
+
+    <p><strong>背景</strong><br>
+    知識創造型社会において創造性の重要性が高まる一方，高い認知負荷環境では創造的思考の低下が課題となっている。
+    </p>
+
+    <p><strong>目的</strong><br>
+    歩行による介入が創造的思考へ与える影響を，Alternative Uses Task（AUT）および脳波（EEG）を用いて客観的に評価する。
+    </p>
+
+    <p><strong>結果</strong><br>
+    AUTスコア中央値は歩行前11点から歩行後14点へ上昇し，被験者22名中17名（77%）で改善が確認された
+    （t(22)=4.11, p=0.0003, d=0.88）。
+    EEG解析ではPzチャネル（p=0.0164, d=0.342）およびPO3チャネル（p=0.0317, d=0.269）において
+    θ/α比率の有意な増加が認められた。
+    </p>
+
+    <div class="research-figures" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;">
+      <figure>
+        <img src="images/aut-score-distribution.png" style="width:100%;border:1px solid var(--line);border-radius:6px;">
+        <figcaption style="text-align:center;">図1. AUTスコアの分布</figcaption>
+      </figure>
+      <figure>
+        <img src="images/theta-alpha-ratio.png" style="width:100%;border:1px solid var(--line);border-radius:6px;">
+        <figcaption style="text-align:center;">図2. θ/α比率の分布</figcaption>
+      </figure>
     </div>
-    <div class="prev-img has-img">
-      <img src="images/undergraduate-research.jpg" alt="学部研究の様子"
-           onerror="this.parentElement.classList.remove('has-img'); this.outerHTML='<div class=\'slot-icon\'>🚶</div><div class=\'slot-label\'>Undergraduate Research Image</div>';">
-    </div>
-  </section>
+
+    <p><strong>結論</strong><br>
+    歩行は創造的思考を促進する可能性があり，頭頂―後頭領域におけるθ/α比率は創造性を評価する客観的指標として有効であることが示唆された。
+    </p>
+  </div>
+</div>
+
+</section>
 
   <!-- ── SKILLS ── -->
   <section id="skills" class="anim">
@@ -772,26 +784,6 @@
       </div>
     </div>
 
-    <div class="sec-head" style="margin-top:8px;">
-      <h2 style="font-size:1.05rem;"><span class="ja">好きなゲーム</span><span class="en">Favourite Games</span><span class="zh">喜欢的游戏</span></h2>
-      <span class="sub"><span class="ja">GAMING</span><span class="en">GAMING</span><span class="zh">游戏</span></span>
-    </div>
-    <div class="game-grid">
-      <div class="game-card">
-        <div class="game-emoji">🌾</div>
-        <h3>Stardew Valley</h3>
-        <div class="game-sub"><span class="ja">スターデューバレー</span><span class="en">Relaxing farming simulator</span><span class="zh">星露谷物语</span></div>
-      </div>
-      <div class="game-card">
-        <div class="game-emoji">⚔️</div>
-        <h3>Honor of Kings</h3>
-        <div class="game-sub"><span class="ja">王者荣耀</span><span class="en">Competitive MOBA</span><span class="zh">王者荣耀</span></div>
-      </div>
-      <div class="game-card">
-        <div class="game-emoji">🗡️</div>
-        <h3>Where Winds Meet</h3>
-        <div class="game-sub"><span class="ja">燕云十六声</span><span class="en">Chinese action RPG</span><span class="zh">燕云十六声</span></div>
-      </div>
     </div>
   </section>
 
@@ -813,7 +805,7 @@
         <div class="contact-icon">🔬</div>
         <div>
           <div class="contact-label"><span class="ja">Laboratory / 研究室ページ</span><span class="en">Laboratory</span><span class="zh">实验室</span></div>
-          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener"><span class="ja">高橋研究室 →</span><span class="en">Takahashi Lab →</span><span class="zh">高桥实验室 →</span></a>
+          <a class="contact-value" href="https://new.nu-tf-lab.jp/page/-O9hTtH2cFzZ19CNd805" target="_blank" rel="noopener"><span class="ja">高橋・福田研究室 →</span><span class="en">Takahashi-Fukuda Lab →</span><span class="zh">高桥实验室 →</span></a>
         </div>
       </div>
     </div>
